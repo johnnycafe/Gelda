@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar Peso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+        #photo {
+            display: none;
+            width: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Ingrese su peso</h2>
+    <input type="number" id="peso" placeholder="kg">
+    <p id="resultado"></p>
+    <button onclick="mostrarResultado()">Aceptar</button>
+    
+    <img id="photo" alt="Foto">
+    <audio id="audio"></audio>
+</div>
+
+<script>
+    function mostrarResultado() {
+        var peso = document.getElementById("peso").value;
+        var resultado = document.getElementById("resultado");
+        var imagen = document.getElementById("photo");
+        var audio = document.getElementById("audio");
+
+        if (peso) {
+            if (peso < 60) {
+                // Para peso menor a 60
+                resultado.textContent = "Permitido 👍";  // Texto cuando el peso es menor a 60
+                imagen.src = "pasa.png"; // Reemplaza con tu imagen para <60 kg
+                audio.src = "happy.mp3";  // Reemplaza con tu audio para <60 kg
+            } else {
+                // Para peso mayor o igual a 60
+                resultado.textContent = "Prohibido gordas 🚫";  // Texto cuando el peso es mayor o igual a 60
+                imagen.src = "Golda.jpg"; // Reemplaza con tu imagen para >=60 kg
+                audio.src = "Gelda.mp3";  // Reemplaza con tu audio para >=60 kg
+            }
+
+            // Mostrar la imagen y reproducir el audio
+            imagen.style.display = "block";
+            audio.play();
+
+        } else {
+            resultado.textContent = "Por favor ingrese un peso válido.";
+        }
+    }
+</script>
+
+</body>
+</html>
+
